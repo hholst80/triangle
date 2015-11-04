@@ -42,7 +42,7 @@ contains
 
   recursive integer function cost(i,j) result(mincost)
     integer i, j
-    if (i <= height) then
+    if (i == height) then
       mincost = triangle(i,j)
       return
     end if
