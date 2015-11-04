@@ -1,11 +1,15 @@
-program triangle_program
+program triangle_brute_force
   implicit none
-  integer height, max_height, ires
-  parameter(max_height=100)
-  integer triangle(max_height,max_height)
-  integer memory(max_height,max_height)
+  integer       height, max_height, ires
+  parameter   ( max_height = 100 )
+  integer       triangle(max_height,max_height)
   character*256 filename
-  
+
+  print*, '*************************************************************'
+  print*, '* Brute force method.                                       *'
+  print*, '*************************************************************'
+  print*,
+
   if (iargc() == 0) then
     print*, 'Please supply a data file as first argument'
     return
@@ -13,7 +17,6 @@ program triangle_program
 
   height = 0
   triangle(:,:) = 0
-  memory(:,:) = 0
 
   ! Read data
 
@@ -46,12 +49,7 @@ contains
       mincost = triangle(i,j)
       return
     end if
-    if (memory(i,j) > 0) then
-      mincost = memory(i,j)
-      return
-    end if
     mincost = triangle(i,j) + min(cost(i+1,j),cost(i+1,j+1))
-    memory(i,j) = mincost
   end function cost
   
-end program triangle_program
+end program triangle_brute_force
