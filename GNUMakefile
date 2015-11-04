@@ -1,0 +1,15 @@
+ALL: triangle1 triangle2
+
+% : %.f90
+	gfortran -o $@ $<
+
+clean:
+	$(RM) triangle1 triangle2
+
+test:
+	./triangle1 < Triangle4.txt
+	./triangle2 < Triangle4.txt
+	./triangle1 < Triangle15.txt
+	./triangle2 < Triangle15.txt
+	./triangle2 < Triangle100.txt
+	./triangle1 < Triangle100.txt
